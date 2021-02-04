@@ -1,0 +1,60 @@
+---
+brew_pkgs:
+  # web server
+  - nginx
+  # backend language
+  - go
+  - python
+  - php
+  - php@7.3
+  - node
+  # database
+  - mysql
+  - mysql@5.7
+  - postgresql
+  # util
+  - youtube-dl
+  - neofetch
+  - curl
+  - composer
+  - yarn
+  - dnsmasq
+  # terminal family
+  - zsh
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
+  - zsh-history-substring-search
+  - zsh-completions
+  - zsh-git-prompt
+  - autojump
+  - tmux
+  - git-flow
+  - git-flow-completion
+  - thefuck
+  - bat
+
+brew_apps:
+  - 1password
+  - alfred
+  - datagrip
+  - docker
+  - evernote
+  - font-fira-code-nerd-font
+  - font-hack-nerd-font
+  - font-meslo-lg-nerd-font
+  - google-chrome
+  - goland
+  - gotiengviet
+  - istat-menus
+  - iterm2
+  - phpstorm
+  - pomodone
+  - postman
+  - pycharm
+  - rocket-chat
+  - skype
+  - slack
+  - telegram-desktop
+  - visual-studio-code
+  - vlc
+  - webstorm

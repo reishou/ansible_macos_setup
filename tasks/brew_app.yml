@@ -1,0 +1,8 @@
+---
+- name: Install homebrew application
+  homebrew_cask:
+    name: "{{ item }}"
+    state: latest
+    greedy: true
+    sudo_password: "{{ ansible_become_pass }}"
+  with_items: "{{ brew_apps }}"
