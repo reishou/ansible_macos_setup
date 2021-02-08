@@ -1,2 +1,13 @@
 ---
-- hosts:
+- hosts: local
+
+  vars_files:
+    - config.yml
+
+  tasks:
+    - name: Install brew package
+      include: tasks/brew_pkg.yml
+
+    - name: Install brew app
+      include: tasks/brew_app.yml
+

@@ -27,5 +27,6 @@ if [ ! "$(ls -A "$dir")" ]; then
 	echo "Empty folder"
 	exit 1
 else
- 	echo "Run ansible (TODO)"
+ 	echo "Run ansible"
+ 	ansible-playbook main_playbook.yml -i inventory --ask-become-pass
 fi

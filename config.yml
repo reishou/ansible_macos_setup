@@ -29,7 +29,6 @@ brew_pkgs:
   - autojump
   - tmux
   - git-flow
-  - git-flow-completion
   - thefuck
   - bat
 
