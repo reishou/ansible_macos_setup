@@ -32,6 +32,9 @@ brew_pkgs:
   - thefuck
   - bat
 
+brew_taps:
+  - homebrew/cask-fonts
+
 brew_apps:
   - 1password
   - alfred
@@ -57,3 +60,66 @@ brew_apps:
   - visual-studio-code
   - vlc
   - webstorm
+
+post_install:
+  defaults: [
+    # Login
+    { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string", value: "file://${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg" },
+    #
+    { domain: "com.apple", key: "swipescrolldirection", type: "bool", value: "false" },
+    # Dock
+    { domain: "com.apple.dock", key: "autohide", type: "bool", value: "true" },
+    { domain: "com.apple.dock", key: "magnification", type: "bool", value: "true" },
+    { domain: "com.apple.dock", key: "orientation", type: "string", value: "left" },
+    { domain: "com.apple.dock", key: "largesize", type: "float", value: "85" },
+    { domain: "com.apple.dock", key: "tilesize", type: "float", value: "75" },
+    { domain: "com.apple.dock", key: "show-recents", type: "bool", value: "false" },
+    { domain: "com.apple.dock", key: "mineffect", type: "string", value: "suck" },
+    { domain: "com.apple.dock", key: "minimize-to-application", type: "bool", value: "true" },
+    { domain: "com.apple.dock", key: "wvous-br-corner", type: "int", value: "5" },
+    { domain: "com.apple.dock", key: "wvous-br-modifier", type: "int", value: "0" },
+    { domain: "com.apple.dock", key: "static-only", type: "bool", value: "true" },
+    # Finder
+    { domain: "com.apple.finder", key: "QuitMenuItem", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "NewWindowTarget", type: "string", value: "PfLo" },
+    { domain: "com.apple.finder", key: "NewWindowTargetPath", type: "string", value: "file://${HOME}/Downloads" },
+    { domain: "com.apple.finder", key: "ShowExternalHardDrivesOnDesktop", type: "bool", value: "false" },
+    { domain: "com.apple.finder", key: "ShowHardDrivesOnDesktop", type: "bool", value: "false" },
+    { domain: "com.apple.finder", key: "ShowRemovableMediaOnDesktop", type: "bool", value: "false" },
+    { domain: "com.apple.finder", key: "AppleShowAllFiles", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "AppleShowAllExtensions", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "ShowStatusBar", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "PathBarRootAtHome", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "ShowPathbar", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "ShowPreviewPane", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "QLEnableTextSelection", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "_FXShowPosixPathInTitle", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "FXDefaultSearchScope", type: "string", value: "SCcf" },
+    { domain: "com.apple.finder", key: "FXEnableExtensionChangeWarning", type: "bool", value: "false" },
+    { domain: "com.apple.finder", key: "FXPreferredViewStyle", type: "string", value: "clmv" },
+    { domain: "com.apple.finder", key: "SearchRecentsSavedViewStyle", type: "string", value: "clmv" },
+    { domain: "com.apple.finder", key: "WarnOnEmptyTrash", type: "bool", value: "false" },
+    { domain: "com.apple.finder", key: "EmptyTrashSecurely", type: "bool", value: "true" },
+    { domain: "com.apple.frameworks.diskimages", key: "auto-open-ro-root", type: "bool", value: "true" },
+    { domain: "com.apple.frameworks.diskimages", key: "auto-open-rw-root", type: "bool", value: "true" },
+    { domain: "com.apple.finder", key: "OpenWindowForNewRemovableDisk", type: "bool", value: "true"},
+    # Global
+    { domain: "com.apple.menuextra.clock", key: "DateFormat", type: "string", value: "EEE MMM d HH:mm" },
+    { domain: "NSGlobalDomain", key: "AppleICUForce12HourTime", type: "boolean", value: "false" },
+    { domain: "NSGlobalDomain", key: "AppleMeasurementUnits", type: "string", value: "Centimeters" },
+    { domain: "NSGlobalDomain", key: "AppleMetricUnits", type: "boolean", value: "true" },
+    { domain: "NSGlobalDomain", key: "AppleLocale", type: "string", value: "en_US@currency=USD" },
+    { domain: "NSGlobalDomain", key: "AppleTemperatureUnit", type: "string", value: "Celsius" },
+    { domain: "NSGlobalDomain", key: "NSAutomaticCapitalizationEnabled", type: "bool", value: "false" },
+    { domain: "NSGlobalDomain", key: "NSAutomaticSpellingCorrectionEnabled", type: "bool", value: "false" },
+    { domain: "NSGlobalDomain", key: "CheckSpellingWhileTyping", type: "bool", value: "false" },
+    { domain: "NSGlobalDomain", key: "NSDocumentSaveNewDocumentsToCloud", type: "bool", value: "false" },
+    { domain: "NSGlobalDomain", key: "NSNavPanelExpandedStateForSaveMode", type: "bool", value: "true" },
+    { domain: "NSGlobalDomain", key: "NSNavPanelExpandedStateForSaveMode2", type: "bool", value: "true" },
+    # SoftwareUpdate
+    { domain: "com.apple.SoftwareUpdate", key: "AutomaticCheckEnabled", type: "bool", value: "true" },
+    { domain: "com.apple.SoftwareUpdate", key: "AutomaticDownload", type: "bool", value: "true" },
+    # Screensaver
+    { domain: "com.apple.screensaver", key: "askForPassword", type: "bool", value: "true" },
+    { domain: "com.apple.screensaver", key: "askForPasswordDelay", type: "int", value: "0" }
+  ]

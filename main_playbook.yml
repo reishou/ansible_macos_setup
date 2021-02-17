@@ -5,9 +5,15 @@
     - config.yml
 
   tasks:
-    - name: Install brew package
-      include: tasks/brew_pkg.yml
+#    - name: Install brew package
+#      include: tasks/brew_pkg.yml
+#
+#    - name: Install brew tap
+#      include: tasks/brew_tap.yml
+#
+#    - name: Install brew app
+#      include: tasks/brew_app.yml
 
-    - name: Install brew app
-      include: tasks/brew_app.yml
+    - name: Post-Intall osx
+      include: tasks/post_install.yml
 

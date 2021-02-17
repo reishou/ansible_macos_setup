@@ -1,0 +1,6 @@
+---
+- name: Install homebrew tap
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ brew_taps }}"

@@ -1,0 +1,29 @@
+---
+- name: Set the timezone to Asia/Ho_Chi_Minh
+  become: true
+  command: "systemsetup -settimezone 'Asia/Ho_Chi_Minh'"
+
+- name: Setup macOS defaults
+  become: "{{ item.global | default(false) }}"
+  osx_defaults:
+    array_add: "{{ item.add | default(false) }}"
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: present
+  when: item.enable | default(true)
+  with_items: "{{ post_install.defaults }}"
+  loop_control:
+    label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
+
+- name: Killall Dock
+  shell:
+    cmd: killall Dock
+
+- name: Killall Finder
+  shell:
+    cmd: killall Finder
+
+
+
