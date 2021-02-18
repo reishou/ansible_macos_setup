@@ -1,6 +1,0 @@
----
-- name: Install homebrew package
-  homebrew:
-    name: "{{ brew_pkgs }}"
-    state: latest
-    install_options: force

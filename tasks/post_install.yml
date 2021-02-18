@@ -1,37 +1,46 @@
 ---
-- name: Set the timezone to {{ os_timezone }}
-  become: true
-  shell: "systemsetup -settimezone '{{ os_timezone }}'"
+#- name: Set the timezone to {{ post_install.os_timezone }}
+#  become: true
+#  shell: "systemsetup -settimezone '{{ post_install.os_timezone }}'"
+#
+#- name: Set computer name {{ computer_name }}
+#  become: true
+#  shell: "scutil --set ComputerName {{ post_install.computer_name }}"
+#
+#- name: Set computer name {{ computer_name }}
+#  become: true
+#  shell: "scutil --set LocalHostName {{ post_install.computer_name }}"
 
-- name: Set computer name {{ computer_name }}
-  become: true
-  shell: "scutil --set ComputerName {{ computer_name }}"
+#- name: Setup macOS defaults
+#  become: "{{ item.global | default(false) }}"
+#  osx_defaults:
+#    array_add: "{{ item.add | default(false) }}"
+#    domain: "{{ item.domain }}"
+#    key: "{{ item.key }}"
+#    type: "{{ item.type }}"
+#    value: "{{ item.value }}"
+#    state: present
+#  when: item.enable | default(true)
+#  with_items: "{{ post_install.defaults }}"
+#  loop_control:
+#    label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
 
-- name: Set computer name {{ computer_name }}
-  become: true
-  shell: "scutil --set LocalHostName {{ computer_name }}"
+#- name: Check exist oh-my-zsh
+#  stat: path=${HOME}/.oh-my-zsh
+#  register: omz_exist
+#
+#- name: Backup oh-my-zsh
+#  shell: mv ${HOME}/.oh-my-zsh/ ${HOME}/.oh-my-zsh-bk/
+#  when: omz_exist.stat.exists
+#
+#- name: Install oh-my-zsh
+#  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-- name: Setup macOS defaults
-  become: "{{ item.global | default(false) }}"
-  osx_defaults:
-    array_add: "{{ item.add | default(false) }}"
-    domain: "{{ item.domain }}"
-    key: "{{ item.key }}"
-    type: "{{ item.type }}"
-    value: "{{ item.value }}"
-    state: present
-  when: item.enable | default(true)
-  with_items: "{{ post_install.defaults }}"
-  loop_control:
-    label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
-
-- name: Killall Dock
-  shell:
-    cmd: killall Dock
-
-- name: Killall Finder
-  shell:
-    cmd: killall Finder
+#- name: Killall Dock
+#  shell: killall Dock
+#
+#- name: Killall Finder
+#  shell: killall Finder
 
 
 

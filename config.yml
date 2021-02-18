@@ -6,11 +6,9 @@ brew_pkgs:
   - go
   - python
   - php
-  - php@7.3
   - node
   # database
   - mysql
-  - mysql@5.7
   - postgresql
   # util
   - youtube-dl
@@ -118,17 +116,16 @@ post_install:
     { domain: "com.apple.SoftwareUpdate", key: "AutomaticCheckEnabled", type: "bool", value: "true" },
     { domain: "com.apple.SoftwareUpdate", key: "AutomaticDownload", type: "bool", value: "true" },
     # Screensaver
-    { domain: "com.apple.screensaver", key: "askForPassword", type: "bool", value: "true" },
+    { domain: "com.apple.screensaver", key: "askForPassword", type: "int", value: "1" },
     { domain: "com.apple.screensaver", key: "askForPasswordDelay", type: "int", value: "0" },
     # DiskUtility
     { domain: "com.apple.DiskUtility", key: "SidebarShowAllDevices", type: "bool", value: "true" },
     # Other
+    { domain: "com.apple.LaunchServices", key: "LSQuarantine", type: "bool", value: "false" },
     # Not work
     { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string", value: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg" },
 #    { domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: "bool", value: "true" },
 #    { domain: "com.apple.universalaccess", key: "mouseDriverCursorSize", type: "float", value: "1.25" },
   ]
-
-os_timezone: "Asia/Ho_Chi_Minh"
-
-computer_name: "sakura"
+  os_timezone: "Asia/Ho_Chi_Minh"
+  computer_name: "sakura"
