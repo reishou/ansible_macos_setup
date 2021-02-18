@@ -1,7 +1,15 @@
 ---
-- name: Set the timezone to Asia/Ho_Chi_Minh
+- name: Set the timezone to {{ os_timezone }}
   become: true
-  command: "systemsetup -settimezone 'Asia/Ho_Chi_Minh'"
+  shell: "systemsetup -settimezone '{{ os_timezone }}'"
+
+- name: Set computer name {{ computer_name }}
+  become: true
+  shell: "scutil --set ComputerName {{ computer_name }}"
+
+- name: Set computer name {{ computer_name }}
+  become: true
+  shell: "scutil --set LocalHostName {{ computer_name }}"
 
 - name: Setup macOS defaults
   become: "{{ item.global | default(false) }}"

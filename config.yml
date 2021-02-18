@@ -63,16 +63,14 @@ brew_apps:
 
 post_install:
   defaults: [
-    # Login
-    { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string", value: "file://${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg" },
-    #
+    # Mouse
     { domain: "com.apple", key: "swipescrolldirection", type: "bool", value: "false" },
     # Dock
     { domain: "com.apple.dock", key: "autohide", type: "bool", value: "true" },
     { domain: "com.apple.dock", key: "magnification", type: "bool", value: "true" },
     { domain: "com.apple.dock", key: "orientation", type: "string", value: "left" },
     { domain: "com.apple.dock", key: "largesize", type: "float", value: "85" },
-    { domain: "com.apple.dock", key: "tilesize", type: "float", value: "75" },
+    { domain: "com.apple.dock", key: "tilesize", type: "float", value: "45" },
     { domain: "com.apple.dock", key: "show-recents", type: "bool", value: "false" },
     { domain: "com.apple.dock", key: "mineffect", type: "string", value: "suck" },
     { domain: "com.apple.dock", key: "minimize-to-application", type: "bool", value: "true" },
@@ -121,5 +119,16 @@ post_install:
     { domain: "com.apple.SoftwareUpdate", key: "AutomaticDownload", type: "bool", value: "true" },
     # Screensaver
     { domain: "com.apple.screensaver", key: "askForPassword", type: "bool", value: "true" },
-    { domain: "com.apple.screensaver", key: "askForPasswordDelay", type: "int", value: "0" }
+    { domain: "com.apple.screensaver", key: "askForPasswordDelay", type: "int", value: "0" },
+    # DiskUtility
+    { domain: "com.apple.DiskUtility", key: "SidebarShowAllDevices", type: "bool", value: "true" },
+    # Other
+    # Not work
+    { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string", value: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg" },
+#    { domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: "bool", value: "true" },
+#    { domain: "com.apple.universalaccess", key: "mouseDriverCursorSize", type: "float", value: "1.25" },
   ]
+
+os_timezone: "Asia/Ho_Chi_Minh"
+
+computer_name: "sakura"
