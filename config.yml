@@ -18,17 +18,20 @@ brew_pkgs:
   - yarn
   - dnsmasq
   # terminal family
-  - zsh
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
-  - zsh-history-substring-search
-  - zsh-completions
-  - zsh-git-prompt
-  - autojump
+  - fish
+  - grc
   - tmux
-  - git-flow
-  - thefuck
-  - bat
+#  - zsh
+#  - zsh-autosuggestions
+#  - zsh-syntax-highlighting
+#  - zsh-history-substring-search
+#  - zsh-completions
+#  - zsh-git-prompt
+#  - autojump
+#  - tmux
+#  - git-flow
+#  - thefuck
+#  - bat
 
 brew_taps:
   - homebrew/cask-fonts
@@ -75,6 +78,8 @@ post_install:
     { domain: "com.apple.dock", key: "wvous-br-corner", type: "int", value: "5" },
     { domain: "com.apple.dock", key: "wvous-br-modifier", type: "int", value: "0" },
     { domain: "com.apple.dock", key: "static-only", type: "bool", value: "true" },
+    { domain: "com.apple.dock", key: "autohide-delay", type: "float", value: "0" },
+    { domain: "com.apple.dock", key: "autohide-time-modifier", type: "float", value: "0" },
     # Finder
     { domain: "com.apple.finder", key: "QuitMenuItem", type: "bool", value: "true" },
     { domain: "com.apple.finder", key: "NewWindowTarget", type: "string", value: "PfLo" },
@@ -92,8 +97,8 @@ post_install:
     { domain: "com.apple.finder", key: "_FXShowPosixPathInTitle", type: "bool", value: "true" },
     { domain: "com.apple.finder", key: "FXDefaultSearchScope", type: "string", value: "SCcf" },
     { domain: "com.apple.finder", key: "FXEnableExtensionChangeWarning", type: "bool", value: "false" },
-    { domain: "com.apple.finder", key: "FXPreferredViewStyle", type: "string", value: "clmv" },
-    { domain: "com.apple.finder", key: "SearchRecentsSavedViewStyle", type: "string", value: "clmv" },
+    { domain: "com.apple.finder", key: "FXPreferredViewStyle", type: "string", value: "Nlsv" },
+    { domain: "com.apple.finder", key: "SearchRecentsSavedViewStyle", type: "string", value: "Nlsv" },
     { domain: "com.apple.finder", key: "WarnOnEmptyTrash", type: "bool", value: "false" },
     { domain: "com.apple.finder", key: "EmptyTrashSecurely", type: "bool", value: "true" },
     { domain: "com.apple.frameworks.diskimages", key: "auto-open-ro-root", type: "bool", value: "true" },
@@ -121,11 +126,14 @@ post_install:
     # DiskUtility
     { domain: "com.apple.DiskUtility", key: "SidebarShowAllDevices", type: "bool", value: "true" },
     # Other
-    { domain: "com.apple.LaunchServices", key: "LSQuarantine", type: "bool", value: "false" },
+    { domain: "com.apple.dashboard", key: "mcx-disabled", type: "bool", value: "true" },
     # Not work
+    { domain: "com.apple.LaunchServices", key: "LSQuarantine", type: "bool", value: "false" },
     { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string", value: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg" },
 #    { domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: "bool", value: "true" },
 #    { domain: "com.apple.universalaccess", key: "mouseDriverCursorSize", type: "float", value: "1.25" },
   ]
   os_timezone: "Asia/Ho_Chi_Minh"
   computer_name: "sakura"
+  dotfiles_repo: "https://github.com/reishou/dotfiles.fish.git"
+  dotfiles_dest: "${HOME}/.dotfiles"

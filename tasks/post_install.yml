@@ -1,46 +1,53 @@
 ---
-#- name: Set the timezone to {{ post_install.os_timezone }}
-#  become: true
-#  shell: "systemsetup -settimezone '{{ post_install.os_timezone }}'"
-#
-#- name: Set computer name {{ computer_name }}
-#  become: true
-#  shell: "scutil --set ComputerName {{ post_install.computer_name }}"
-#
-#- name: Set computer name {{ computer_name }}
-#  become: true
-#  shell: "scutil --set LocalHostName {{ post_install.computer_name }}"
+- name: Set the timezone to {{ post_install.os_timezone }}
+  become: true
+  shell: "systemsetup -settimezone '{{ post_install.os_timezone }}'"
 
-#- name: Setup macOS defaults
-#  become: "{{ item.global | default(false) }}"
-#  osx_defaults:
-#    array_add: "{{ item.add | default(false) }}"
-#    domain: "{{ item.domain }}"
-#    key: "{{ item.key }}"
-#    type: "{{ item.type }}"
-#    value: "{{ item.value }}"
-#    state: present
-#  when: item.enable | default(true)
-#  with_items: "{{ post_install.defaults }}"
-#  loop_control:
-#    label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
+- name: Set computer name {{ computer_name }}
+  become: true
+  shell: "scutil --set ComputerName {{ post_install.computer_name }}"
 
-#- name: Check exist oh-my-zsh
-#  stat: path=${HOME}/.oh-my-zsh
-#  register: omz_exist
-#
-#- name: Backup oh-my-zsh
-#  shell: mv ${HOME}/.oh-my-zsh/ ${HOME}/.oh-my-zsh-bk/
-#  when: omz_exist.stat.exists
-#
-#- name: Install oh-my-zsh
-#  shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+- name: Set computer name {{ computer_name }}
+  become: true
+  shell: "scutil --set LocalHostName {{ post_install.computer_name }}"
 
-#- name: Killall Dock
-#  shell: killall Dock
-#
-#- name: Killall Finder
-#  shell: killall Finder
+- name: Setup macOS defaults
+  become: "{{ item.global | default(false) }}"
+  osx_defaults:
+    array_add: "{{ item.add | default(false) }}"
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: present
+  when: item.enable | default(true)
+  with_items: "{{ post_install.defaults }}"
+  loop_control:
+    label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
+
+- name: Check exist dotfiles
+  stat: path={{ post_install.dotfiles_dest }}
+  register: dotfiles_exist
+
+- name: Backup dotfiles
+  shell: mv {{ post_install.dotfiles_dest }} {{ post_install.dotfiles_dest }}${RANDOM}
+  when: dotfiles_exist.stat.exists
+
+- name: Git clone dotfiles
+  git:
+    repo: "{{ post_install.dotfiles_repo }}"
+    dest: "{{ post_install.dotfiles_dest }}"
+
+- name: Install dotfiles
+  shell: ./script/bootstrap.fish
+  args:
+    chdir: "{{ post_install.dotfiles_dest }}"
+
+- name: Killall Dock
+  shell: killall Dock
+
+- name: Killall Finder
+  shell: killall Finder
 
 
 
