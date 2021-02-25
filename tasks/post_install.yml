@@ -25,24 +25,6 @@
   loop_control:
     label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
 
-- name: Check exist dotfiles
-  stat: path={{ post_install.dotfiles_dest }}
-  register: dotfiles_exist
-
-- name: Backup dotfiles
-  shell: mv {{ post_install.dotfiles_dest }} {{ post_install.dotfiles_dest }}${RANDOM}
-  when: dotfiles_exist.stat.exists
-
-- name: Git clone dotfiles
-  git:
-    repo: "{{ post_install.dotfiles_repo }}"
-    dest: "{{ post_install.dotfiles_dest }}"
-
-- name: Install dotfiles
-  shell: ./script/bootstrap.fish
-  args:
-    chdir: "{{ post_install.dotfiles_dest }}"
-
 - name: Killall Dock
   shell: killall Dock
 

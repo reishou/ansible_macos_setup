@@ -1,0 +1,18 @@
+---
+- hosts: local
+
+  vars_files:
+    - config.yml
+
+  tasks:
+    - name: Install homebrew family
+      include: tasks/homebrew.yml
+
+    - name: Install application on mac app store
+      include: tasks/mac_app_store.yml
+
+    - name: Install dotfiles
+      include: tasks/dotfiles.yml
+
+    - name: Post-Intall osx
+      include: tasks/post_install.yml

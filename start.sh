@@ -16,5 +16,5 @@ if [ ! "$(ls -A "$dir")" ]; then
 	exit 1
 else
  	echo "Run ansible"
- 	ansible-playbook main_playbook.yml -i inventory --ask-become-pass
+ 	ansible-playbook main.yml -i inventory --ask-become-pass
 fi

@@ -1,0 +1,25 @@
+---
+- name: Install oh-my-fish
+  shell: curl -L https://get.oh-my.fish | fish
+
+- name: Check exist dotfiles
+  stat: path={{ dotfiles.dotfiles_dest }}
+  register: dotfiles_exist
+
+- name: Git pull dotfiles
+  git:
+    repo: "{{ dotfiles.dotfiles_repo }}"
+    dest: "{{ dotfiles.dotfiles_dest }}"
+    update: yes
+  when: dotfiles_exist.stat.exists
+
+- name: Git clone dotfiles
+  git:
+    repo: "{{ dotfiles.dotfiles_repo }}"
+    dest: "{{ dotfiles.dotfiles_dest }}"
+  when: not dotfiles_exist.stat.exists
+
+- name: Install dotfiles
+  shell: ./script/bootstrap.fish
+  args:
+    chdir: "{{ dotfiles.dotfiles_dest }}"

@@ -1,0 +1,8 @@
+---
+- name: Install application on mac app store
+  mas:
+    id: "{{ item.id }}"
+    state: latest
+  with_items: "{{ mas_apps }}"
+  loop_control:
+    label: "{{ item.description | default( item.name ) }}"

@@ -11,27 +11,25 @@ brew_pkgs:
   - mysql
   - postgresql
   # util
+  - mas
   - youtube-dl
   - neofetch
   - curl
   - composer
   - yarn
   - dnsmasq
+  - direnv
   # terminal family
   - fish
+  - bat
+  - exa
+  - fd
+  - htop
+  - ripgrep
   - grc
   - tmux
-#  - zsh
-#  - zsh-autosuggestions
-#  - zsh-syntax-highlighting
-#  - zsh-history-substring-search
-#  - zsh-completions
-#  - zsh-git-prompt
-#  - autojump
-#  - tmux
-#  - git-flow
-#  - thefuck
-#  - bat
+  - autojump
+  - git-flow
 
 brew_taps:
   - homebrew/cask-fonts
@@ -43,8 +41,7 @@ brew_apps:
   - docker
   - evernote
   - font-fira-code-nerd-font
-  - font-hack-nerd-font
-  - font-meslo-lg-nerd-font
+  - font-inconsolata
   - google-chrome
   - goland
   - gotiengviet
@@ -54,13 +51,24 @@ brew_apps:
   - pomodone
   - postman
   - pycharm
+  - rectangle
   - rocket-chat
   - skype
   - slack
   - telegram-desktop
+  - transmission
   - visual-studio-code
   - vlc
   - webstorm
+
+mas_apps: [
+  { id: 585829637, name: "Todoist" },
+  { id: 540348655, name: "Monosnap" },
+]
+
+dotfiles:
+  dotfiles_repo: "https://github.com/reishou/dotfiles.fish.git"
+  dotfiles_dest: "${HOME}/.dotfiles"
 
 post_install:
   defaults: [
@@ -135,5 +143,3 @@ post_install:
   ]
   os_timezone: "Asia/Ho_Chi_Minh"
   computer_name: "sakura"
-  dotfiles_repo: "https://github.com/reishou/dotfiles.fish.git"
-  dotfiles_dest: "${HOME}/.dotfiles"
