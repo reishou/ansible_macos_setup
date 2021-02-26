@@ -87,8 +87,8 @@ post_install:
     { domain: "com.apple.dock", key: "wvous-br-corner", type: "int", value: "5" },
     { domain: "com.apple.dock", key: "wvous-br-modifier", type: "int", value: "0" },
     { domain: "com.apple.dock", key: "static-only", type: "bool", value: "true" },
-    { domain: "com.apple.dock", key: "autohide-delay", type: "float", value: "0" },
-    { domain: "com.apple.dock", key: "autohide-time-modifier", type: "float", value: "0" },
+    #    { domain: "com.apple.dock", key: "autohide-delay", type: "float", value: "0" },
+    #    { domain: "com.apple.dock", key: "autohide-time-modifier", type: "float", value: "0" },
     # Finder
     { domain: "com.apple.finder", key: "QuitMenuItem", type: "bool", value: "true" },
     { domain: "com.apple.finder", key: "NewWindowTarget", type: "string", value: "PfLo" },
@@ -112,7 +112,7 @@ post_install:
     { domain: "com.apple.finder", key: "EmptyTrashSecurely", type: "bool", value: "true" },
     { domain: "com.apple.frameworks.diskimages", key: "auto-open-ro-root", type: "bool", value: "true" },
     { domain: "com.apple.frameworks.diskimages", key: "auto-open-rw-root", type: "bool", value: "true" },
-    { domain: "com.apple.finder", key: "OpenWindowForNewRemovableDisk", type: "bool", value: "true"},
+    { domain: "com.apple.finder", key: "OpenWindowForNewRemovableDisk", type: "bool", value: "true" },
     # Global
     { domain: "com.apple.menuextra.clock", key: "DateFormat", type: "string", value: "EEE MMM d HH:mm" },
     { domain: "NSGlobalDomain", key: "AppleICUForce12HourTime", type: "boolean", value: "false" },
@@ -136,11 +136,128 @@ post_install:
     { domain: "com.apple.DiskUtility", key: "SidebarShowAllDevices", type: "bool", value: "true" },
     # Other
     { domain: "com.apple.dashboard", key: "mcx-disabled", type: "bool", value: "true" },
+    # Shortcut has type dict, ansible osx_defaults not support
+    #    { domain: "com.apple.symbolichotkeys", key: "AppleSymbolicHotKeys", type: "dict", value:
+    #      {
+    #        # Screenshots
+    #        28: { enabled: 0 }, # Save picture of screen as a file
+    #        29: { enabled: 0 }, # Copy picture of screen to the clipboard
+    #        30: { enabled: 0 }, # Save picture of selected area as a file
+    #        31: { enabled: 0 }, # Copy picture of selected area to the clipboard
+    #        184: { enabled: 0 }, # Screenshot and recording options
+    #        # Spotlight
+    #        64: { enabled: 0 }, # Show Spotlight search
+    #      }
+    #    },
     # Not work
     { domain: "com.apple.LaunchServices", key: "LSQuarantine", type: "bool", value: "false" },
-    { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string", value: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg" },
-#    { domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: "bool", value: "true" },
-#    { domain: "com.apple.universalaccess", key: "mouseDriverCursorSize", type: "float", value: "1.25" },
+    { domain: "com.apple.loginwindow", key: "DesktopPicture", type: "string",
+      value: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg", global: "true" },
+    #    { domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: "bool", value: "true" },
+    #    { domain: "com.apple.universalaccess", key: "mouseDriverCursorSize", type: "float", value: "1.25" },
   ]
+  shorcuts: [
+    { key: "28", dict: "
+    <dict>
+        <key>enabled</key><false/>
+        <key>value</key><dict>
+          <key>type</key><string>standard</string>
+          <key>parameters</key>
+          <array>
+            <integer>51</integer>
+            <integer>20</integer>
+            <integer>1179648</integer>
+          </array>
+        </dict>
+      </dict>
+    " }, # Save picture of screen as a file
+    { key: "29", dict: "
+    <dict>
+        <key>enabled</key><false/>
+        <key>value</key><dict>
+          <key>type</key><string>standard</string>
+          <key>parameters</key>
+          <array>
+            <integer>51</integer>
+            <integer>20</integer>
+            <integer>1441792</integer>
+          </array>
+        </dict>
+      </dict>
+    " }, # Copy picture of screen to the clipboard
+    { key: "30", dict: "
+    <dict>
+        <key>enabled</key><false/>
+        <key>value</key><dict>
+          <key>type</key><string>standard</string>
+          <key>parameters</key>
+          <array>
+            <integer>52</integer>
+            <integer>21</integer>
+            <integer>1179648</integer>
+          </array>
+        </dict>
+      </dict>
+    " }, # Save picture of selected area as a file
+    { key: "31", dict: "
+    <dict>
+        <key>enabled</key><false/>
+        <key>value</key><dict>
+          <key>type</key><string>standard</string>
+          <key>parameters</key>
+          <array>
+            <integer>52</integer>
+            <integer>21</integer>
+            <integer>1441792</integer>
+          </array>
+        </dict>
+      </dict>
+    " }, # Copy picture of selected area to the clipboard
+    { key: "184", dict: "
+    <dict>
+        <key>enabled</key><false/>
+        <key>value</key><dict>
+          <key>type</key><string>standard</string>
+          <key>parameters</key>
+          <array>
+            <integer>53</integer>
+            <integer>23</integer>
+            <integer>1179648</integer>
+          </array>
+        </dict>
+      </dict>
+    " }, # Screenshot and recording options
+    { key: "64", dict: "
+    <dict>
+        <key>enabled</key><false/>
+        <key>value</key><dict>
+          <key>type</key><string>standard</string>
+          <key>parameters</key>
+          <array>
+            <integer>65535</integer>
+            <integer>49</integer>
+            <integer>1048576</integer>
+          </array>
+        </dict>
+      </dict>
+    " }, # Show Spotlight search
+  ]
+  man_page:
+    key: [
+      "com.apple.Terminal - Search man Page Index in Terminal - searchManPages",
+      "com.apple.Terminal - Open man Page in Terminal - openManPage"
+    ]
+    dict: "
+    <dict>
+        <key>enabled_context_menu</key><integer>0</integer>
+        <key>enabled_services_menu</key><integer>0</integer>
+        <key>presentation_modes</key><dict>
+           <key>ContextMenu</key><integer>0</integer>
+           <key>ServicesMenu</key><integer>0</integer>
+         </dict>
+      </dict>
+    "
   os_timezone: "Asia/Ho_Chi_Minh"
   computer_name: "sakura"
+  background_image: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg"
+  screen_installer: "${HOME}/Documents/LotsaWater.saver"
