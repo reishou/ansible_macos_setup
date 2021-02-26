@@ -24,6 +24,7 @@ brew_pkgs:
   - bat
   - exa
   - fd
+  - fzf
   - htop
   - ripgrep
   - grc
