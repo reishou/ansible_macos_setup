@@ -1,24 +1,24 @@
 ---
 brew_pkgs:
   # web server
-  - nginx
+#  - nginx
   # backend language
-  - go
-  - python
-  - php
-  - node
+#  - go
+#  - python
+#  - php
+#  - node
   # database
-  - mysql
-  - postgresql
+#  - mysql
+#  - postgresql
   # util
   - mas
   - youtube-dl
   - neofetch
   - curl
-  - composer
-  - yarn
-  - dnsmasq
-  - direnv
+#  - composer
+#  - yarn
+#  - dnsmasq
+#  - direnv
   # terminal family
   - fish
   - bat
@@ -30,7 +30,7 @@ brew_pkgs:
   - grc
   - tmux
   - autojump
-  - git-flow
+#  - git-flow
 
 brew_taps:
   - homebrew/cask-fonts
@@ -38,25 +38,18 @@ brew_taps:
 brew_apps:
   - 1password
   - alfred
-  - datagrip
-  - docker
   - evernote
   - font-fira-code-nerd-font
   - font-inconsolata
   - google-chrome
-  - goland
   - gotiengviet
   - istat-menus
   - iterm2
-  - phpstorm
-  - pomodone
   - postman
-  - pycharm
-  - rectangle
   - rocket-chat
+  - sequel-pro
   - skype
   - slack
-  - telegram-desktop
   - transmission
   - visual-studio-code
   - vlc
@@ -258,6 +251,6 @@ post_install:
       </dict>
     "
   os_timezone: "Asia/Ho_Chi_Minh"
-  computer_name: "sakura"
+  computer_name: "sakura-chan"
   background_image: "${HOME}/Documents/Pictures/anime-kite-in-sky-dusk_3840x2160_xtrafondos.jpg"
   screen_installer: "${HOME}/Documents/LotsaWater.saver"

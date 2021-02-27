@@ -38,6 +38,7 @@
     repo: "{{ dotfiles.dotfiles_repo }}"
     dest: "{{ dotfiles.dotfiles_dest }}"
     clone: yes
+    version: sakura
   when: not dotfiles_exist.stat.exists
 
 - name: Install dotfiles

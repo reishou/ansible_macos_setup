@@ -17,5 +17,6 @@ if [ ! "$(ls -A "$dir")" ]; then
 else
  	echo "Run ansible"
  	cd "$dir" || exit
+ 	git checkout sakura
  	ansible-playbook main.yml -i inventory --ask-become-pass
 fi
