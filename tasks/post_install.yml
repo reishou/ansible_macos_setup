@@ -25,9 +25,9 @@
   loop_control:
     label: "{{ item.description | default( item.domain + '.' + item.key) }} = {{ item.value }}"
 
-- name: Setup macOS shortcut
+- name: Setup macOS hot keys
   shell: "defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add {{ item.key }} '{{ item.dict }}'"
-  with_items: "{{ post_install.shortcuts }}"
+  with_items: "{{ post_install.hot_keys }}"
 
 - name: Disable Terminal - man Page
   shell: defaults write pbs NSServicesStatus -dict-add '{{ item }}' '{{ post_install.man_page.dict }}'

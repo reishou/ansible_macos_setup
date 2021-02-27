@@ -1,4 +1,4 @@
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 brew ls --versions ansible || brew install ansible
 brew outdated ansible || brew upgrade ansible
@@ -16,5 +16,6 @@ if [ ! "$(ls -A "$dir")" ]; then
 	exit 1
 else
  	echo "Run ansible"
+ 	cd "$dir" || exit
  	ansible-playbook main.yml -i inventory --ask-become-pass
 fi

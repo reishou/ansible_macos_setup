@@ -74,7 +74,7 @@ dotfiles:
 post_install:
   defaults: [
     # Mouse
-    { domain: "com.apple", key: "swipescrolldirection", type: "bool", value: "false" },
+    { domain: "com.apple", key: "swipescrolldirection", type: "bool", value: "NO" },
     # Dock
     { domain: "com.apple.dock", key: "autohide", type: "bool", value: "true" },
     { domain: "com.apple.dock", key: "magnification", type: "bool", value: "true" },
@@ -156,7 +156,7 @@ post_install:
     #    { domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: "bool", value: "true" },
     #    { domain: "com.apple.universalaccess", key: "mouseDriverCursorSize", type: "float", value: "1.25" },
   ]
-  shorcuts: [
+  hot_keys: [
     { key: "28", dict: "
     <dict>
         <key>enabled</key><false/>

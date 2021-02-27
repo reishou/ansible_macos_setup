@@ -1,6 +1,25 @@
 ---
+- name: Check if oh-my-fish is installed
+  stat:
+    path: '/etc/omf.installed'
+  register: omf
+
+- name: Clone oh-my-fish repo
+  git:
+    repo: 'https://github.com/oh-my-fish/oh-my-fish'
+    dest: '/tmp/omf'
+    clone: yes
+  when: not omf.stat.exists
+
 - name: Install oh-my-fish
-  shell: curl -L https://get.oh-my.fish | fish
+  become: true
+  command: /tmp/omf/bin/install -y --offline --noninteractive
+  when: not omf.stat.exists
+
+- name: Mark oh-my-fish installed with /etc/omf.installed
+  file:
+    path: /etc/omf.installed
+    state: touch
 
 - name: Check exist dotfiles
   stat: path={{ dotfiles.dotfiles_dest }}
@@ -11,12 +30,14 @@
     repo: "{{ dotfiles.dotfiles_repo }}"
     dest: "{{ dotfiles.dotfiles_dest }}"
     update: yes
+    clone: false
   when: dotfiles_exist.stat.exists
 
 - name: Git clone dotfiles
   git:
     repo: "{{ dotfiles.dotfiles_repo }}"
     dest: "{{ dotfiles.dotfiles_dest }}"
+    clone: yes
   when: not dotfiles_exist.stat.exists
 
 - name: Install dotfiles
