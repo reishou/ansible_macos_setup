@@ -39,6 +39,7 @@ brew_apps:
   - 1password
   - alfred
   - evernote
+  - firefox
   - font-fira-code-nerd-font
   - font-inconsolata
   - google-chrome
