@@ -18,5 +18,4 @@
     state: latest
     greedy: true
     install_options: force
-    ignore_errors: yes
   with_items: "{{ brew_apps }}"

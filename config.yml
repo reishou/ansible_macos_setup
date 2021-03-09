@@ -45,9 +45,9 @@ brew_apps:
   - font-inconsolata
   - google-chrome
   - goland
-  - gotiengviet
   - istat-menus
   - iterm2
+  - openkey
   - phpstorm
   - pomodone
   - postman
